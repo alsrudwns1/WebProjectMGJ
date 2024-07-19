@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	id="WebApp_ID" version="5.0">
+	<display-name>WebProject_MGJ</display-name>
+	<welcome-file-list>
+		<welcome-file>index.do</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>write.do</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>OracleDriver</param-name>
+		<param-value>oracle.jdbc.OracleDriver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>OracleURL</param-name>
+		<param-value>jdbc:oracle:thin:@localhost:1522:xe</param-value>
+	</context-param>
+	<context-param>
+		<param-name>OracleId</param-name>
+		<param-value>musthave</param-value>
+	</context-param>
+	<context-param>
+		<param-name>OraclePwd</param-name>
+		<param-value>1234</param-value>
+	</context-param>
+
+	<!-- 세션 유지 시간 설정: 분단위 -->
+	<session-config>
+		<session-timeout>35</session-timeout>
+	</session-config>
+
+	<context-param>
+		<param-name>POSTS_PER_PAGE</param-name>
+		<param-value>10</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PAGES_PER_BLOCK</param-name>
+		<param-value>5</param-value>
+	</context-param>
+
+	<!-- 14-6 -->
+	<servlet>
+		<servlet-name>MVCBoardList</servlet-name>
+		<servlet-class>model2.mvcboard.ListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MVCBoardList</servlet-name>
+		<url-pattern>/release-list.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MVCBoardView</servlet-name>
+		<servlet-class>model2.mvcboard.ViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MVCBoardView</servlet-name>
+		<url-pattern>/release-view.do</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- 14-9 -->
+	<servlet>
+		<servlet-name>MVCBoardWrite</servlet-name>
+		<servlet-class>model2.mvcboard.WriteController</servlet-class>
+		<multipart-config>
+			<max-file-size>1048576</max-file-size>
+			<max-request-size>10485760</max-request-size>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MVCBoardWrite</servlet-name>
+		<url-pattern>/write.do</url-pattern>
+	</servlet-mapping>
+	
+
+</web-app>
