@@ -292,7 +292,7 @@
 					<p class="help_message">무엇을 도와드릴까요?</p>
 				</div>
 				<div class="login_btn_wrap">
-					<a href="login.jsp" class="login_btn">로그인</a>
+					<a href="login.do" class="login_btn">로그인</a>
 				</div>
 				<div class="shop_btn_wrap">
 					<a href="#" target="_blank" class="shop_btn">SHOP</a>
@@ -316,43 +316,16 @@
 			<div class="contents">
 				<div class="inner">
 					<div class="board_view">
-						<form name="writeFrm" method="post" enctype="multipart/form-data"
-							action="./write.do" onsubmit="return validateForm(this);">
-							<table border="1" width="90%">
-								<tr>
-									<td>작성자</td>
-									<td><input type="text" name="name" style="width: 150px;" />
-									</td>
-								</tr>
-								<tr>
-									<td>제목</td>
-									<td><input type="text" name="title" style="width: 90%;" />
-									</td>
-								</tr>
-								<tr>
-									<td>내용</td>
-									<td><textarea name="content"
-											style="width: 90%; height: 100px;"></textarea></td>
-								</tr>
-								<tr>
-									<td>비밀번호</td>
-									<td><input type="password" name="pass"
-										style="width: 100px;" /></td>
-								</tr>
-								<tr>
-									<td>첨부 파일</td>
-									<td><input type="file" name="ofile" /></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<button type="submit">작성 완료</button>
-										<button type="reset">RESET</button>
-										<button type="button"
-											onclick="location.href='./release-list.do';">목록
-											바로가기</button>
-									</td>
-								</tr>
-							</table>
+						<form action="./write.do" method="post">
+							<div>
+								<label>제목: <input class="write_tit" type="text" name="title" required></label>
+							</div>
+							<div>
+								<label>내용: <textarea class="write_content" name="content" required></textarea></label>
+							</div>
+							<div class="login_btn_wrap">
+								<input class="login_btn" type="submit" value="작성">
+							</div>
 						</form>
 					</div>
 				</div>

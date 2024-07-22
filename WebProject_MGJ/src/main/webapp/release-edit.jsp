@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="./IsLoggedIn.jsp"%>  
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -309,46 +310,45 @@
 
 		<main id="container" class="release sub_container">
 			<div class="sub_top">
-				<h2>자유게시판</h2>
+				<h2>글 수정하기</h2>
 			</div>
 			<div class="contents">
 				<div class="inner">
-					<table border="1">
-						<colgroup>
-							<col width="15%" />
-							<col width="35%" />
-							<col width="15%" />
-							<col width="*" />
-						</colgroup>
-						<tr>
-							<td>번호</td>
-							<td>${dto.num}</td>
-							<td>작성자</td>
-							<td>${dto.id}</td>
-						</tr>
-						<tr>
-							<td>작성일</td>
-							<td>${dto.postdate}</td>
-							<td>조회수</td>
-							<td>${dto.visitcount}</td>
-						</tr>
-						<tr>
-							<td>제목</td>
-							<td colspan="3">${dto.title}</td>
-						</tr>
-						<tr>
-							<td>내용</td>
-							<td colspan="3" class="content">${dto.content}</td>
-						</tr>
-					</table>
-					<form action="./release-edit.do" method="get"
-						style="display: inline;">
-						<input type="hidden" name="num" value="${dto.num}" />
-						<button type="submit" class="button">수정하기</button>
-					</form>
-					<form action="./delete.do" method="post" style="display: inline;">
+					<form action="./release-edit.do" method="post">
 						<input type="hidden" name="num" value="${dto.num}">
-						<button type="submit" class="button">삭제하기</button>
+						<table border="1">
+							<colgroup>
+								<col width="15%" />
+								<col width="35%" />
+								<col width="15%" />
+								<col width="*" />
+							</colgroup>
+							<tr>
+								<td>번호</td>
+								<td>${dto.num}</td>
+								<td>작성자</td>
+								<td>${dto.id}</td>
+							</tr>
+							<tr>
+								<td>작성일</td>
+								<td>${dto.postdate}</td>
+								<td>조회수</td>
+								<td>${dto.visitcount}</td>
+							</tr>
+							<tr>
+								<td>제목</td>
+								<td colspan="3"><input type="text" name="title"
+									value="${dto.title}" size="50"></td>
+							</tr>
+							<tr>
+								<td>내용</td>
+								<td colspan="3" class="content"><textarea name="content"
+										rows="10" cols="50">${dto.content}</textarea></td>
+							</tr>
+						</table>
+						<div>
+							<button type="submit">수정하기</button>
+						</div>
 					</form>
 				</div>
 			</div>

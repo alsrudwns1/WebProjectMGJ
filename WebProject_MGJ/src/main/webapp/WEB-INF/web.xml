@@ -45,40 +45,12 @@
 		<param-value>5</param-value>
 	</context-param>
 
-	<!-- 14-6 -->
-	<servlet>
-		<servlet-name>MVCBoardList</servlet-name>
-		<servlet-class>model2.mvcboard.ListController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MVCBoardList</servlet-name>
-		<url-pattern>/release-list.do</url-pattern>
-	</servlet-mapping>
+	<resource-ref>
+		<description>Oracle Datasource example</description>
+		<res-ref-name>jdbc/myoracle</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 
-	<servlet>
-		<servlet-name>MVCBoardView</servlet-name>
-		<servlet-class>model2.mvcboard.ViewController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MVCBoardView</servlet-name>
-		<url-pattern>/release-view.do</url-pattern>
-	</servlet-mapping>
-
-
-
-	<!-- 14-9 -->
-	<servlet>
-		<servlet-name>MVCBoardWrite</servlet-name>
-		<servlet-class>model2.mvcboard.WriteController</servlet-class>
-		<multipart-config>
-			<max-file-size>1048576</max-file-size>
-			<max-request-size>10485760</max-request-size>
-		</multipart-config>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MVCBoardWrite</servlet-name>
-		<url-pattern>/write.do</url-pattern>
-	</servlet-mapping>
-	
 
 </web-app>

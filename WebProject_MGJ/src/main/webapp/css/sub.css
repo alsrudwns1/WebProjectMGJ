@@ -166,7 +166,29 @@
   margin-bottom: 80px;
 }
 
-
+.board_view .write_tit {
+	margin-left:10px;
+}
+.board_view .write_content {
+	width:90%;
+	height:400px;
+	margin-top:20px;
+	margin-left:10px;
+}
+.board_view .login_btn_wrap {
+	text-align: center;
+}
+.board_view .login_btn {
+    line-height: 52px;
+    background: var(--point-color1);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 30px;
+    margin-bottom:30px;
+    width: 30%;
+    border: none;
+}
 
 
 

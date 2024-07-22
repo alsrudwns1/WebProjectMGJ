@@ -289,14 +289,13 @@
 			<div class="sidemenu_wrap">
 				<div class="login_btn_wrap">
 					<c:choose>
-						<c:when test="${ empty SessionId }">
+						<c:when test="${ empty sessionScope.id }">
 							<!-- session에 데이터가 없을 때(empty). 즉 로그인이 안되었을 때는 로그인 링크를 출력 -->
-							<a class="login_btn" href="login.do">로그인
-							</a>
+							<a class="login_btn" href="login.do">로그인</a>
 						</c:when>
 						<c:otherwise>
 							<!-- 세션영역에 속성이 있다면 로그인 된 상태이므로 
-							로그아웃 링크와 정보수정을 출력 -->
+                    로그아웃 링크와 정보수정을 출력 -->
 							<a class="login_btn" href="./update.jsp">정보 수정</a>
 							<a class="login_btn" href="logout.do">로그아웃</a>
 						</c:otherwise>
@@ -320,44 +319,28 @@
 			<div class="sub_top">
 				<h2>자유 게시판</h2>
 			</div>
-
-
 			<div class="contents">
 				<div class="inner">
 					<div class="board_list">
-						<table border="1" width="90%">
+						<table border="1">
 							<tr>
-								<th width="10%" class="col1">번호</th>
-								<th width="*">제목</th>
-								<th width="15%">작성자</th>
-								<th width="10%">조회수</th>
-								<th width="15%">작성일</th>
-								<th width="8%">첨부</th>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>조회수</th>
 							</tr>
-							<!-- 게시물이 없을 때 -->
-							<c:choose>
-								<c:when test="${empty boardLists }">
-									<tr>
-										<td colspan="6" align="center">등록된 게시물이 없습니다^^*</td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${ boardLists }" var="row" varStatus="loop">
-										<tr align="center">
-											<td>${map.totalCount - (((map.pageNum-1) * map.pageSize) 
-            							+ loop.index)}
-											</td>
-											<td align="left"><a
-												href="./release-view.do?idx=${ row.idx }"> ${ row.title }</a>
-											</td>
-											<td>${ row.name }</td>
-											<td>${ row.visitcount }</td>
-											<td>${ row.postdate }</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
+							<c:forEach var="dto" items="${boardLists}">
+								<tr>
+									<td>${dto.num}</td>
+									<td><a href="release-view.do?num=${dto.num}">${dto.title}</a></td>
+									<td>${dto.id}</td>
+									<td>${dto.postdate}</td>
+									<td>${dto.visitcount}</td>
+								</tr>
+							</c:forEach>
 						</table>
+
 					</div>
 				</div>
 				<div class="board_pagination">
