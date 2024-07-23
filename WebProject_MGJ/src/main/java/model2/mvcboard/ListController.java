@@ -30,7 +30,7 @@ public class ListController extends HttpServlet {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
-        int totalCount = dao.selectCount(map);  // 여기에서 selectCount 메서드를 호출하도록 수정
+        int totalCount = dao.selectCount(map);
 
         ServletContext application = getServletContext();
         int pageSize =

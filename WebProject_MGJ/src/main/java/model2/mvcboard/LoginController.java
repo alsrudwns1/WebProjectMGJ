@@ -29,10 +29,10 @@ public class LoginController extends HttpServlet {
 		if (dto != null && dto.getId() != null) {
 			HttpSession session = req.getSession();
 			session.setAttribute("id", dto.getId());
-			resp.sendRedirect("./release-list.do"); // 로그인 성공 시 게시판 목록 페이지로 이동
+			resp.sendRedirect("./release-list.do"); 
 		} else {
 			req.setAttribute("error", "로그인에 실패하였습니다.");
-			req.getRequestDispatcher("./login.jsp").forward(req, resp); // 로그인 페이지로 포워드
+			req.getRequestDispatcher("./login.jsp").forward(req, resp); 
 		}
 	}
 }

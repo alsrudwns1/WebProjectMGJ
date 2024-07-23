@@ -315,8 +315,15 @@
 						<h2>회원 가입</h2>
 						<script type="text/javascript">
 							function formValidate(form) {
+								var id = form.id.value;
 								var pass = form.pass.value;
 								var pass2 = form.pass2.value;
+
+								if (!validateId(id)) {
+									alert("아이디는 6~12자리의 영문 소문자와 숫자만 사용할 수 있습니다.");
+									form.id.focus();
+									return false;
+								}
 
 								if (pass !== pass2) {
 									alert("비밀번호가 일치하지 않습니다.");
@@ -324,6 +331,19 @@
 								}
 								return true;
 							}
+							
+							function validateId(id) {
+					            if (id.length < 6 || id.length > 12) {
+					                return false;
+					            }
+					            for (var i = 0; i < id.length; i++) {
+					                var char = id.charAt(i);
+					                if (!((char >= 'a' && char <= 'z') || (char >= '0' && char <= '9'))) {
+					                    return false;
+					                }
+					            }
+					            return true;
+					        }
 						</script>
 						<form name="registForm" method="post" action="./create.do"
 							onsubmit="return formValidate(this);">

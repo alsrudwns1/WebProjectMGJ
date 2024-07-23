@@ -31,7 +31,7 @@ public class WriteController extends HttpServlet {
         String content = req.getParameter("content");
 
         BoardDTO dto = new BoardDTO();
-        dto.setId(ID); // 작성자의 아이디 설정
+        dto.setId(ID); 
         dto.setTitle(title);
         dto.setContent(content);
         
@@ -40,9 +40,9 @@ public class WriteController extends HttpServlet {
         int result = dao.insertPost(dto);
 
         if (result == 1) {
-            resp.sendRedirect("./release-list.do"); // 글 작성 성공 시 게시판 목록 페이지로 이동
+            resp.sendRedirect("./release-list.do"); 
         } else {
-            resp.sendRedirect("./write.do"); // 글 작성 실패 시 다시 글쓰기 페이지로 이동
+            resp.sendRedirect("./write.do"); 
         }
     }
 }

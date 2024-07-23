@@ -10,7 +10,6 @@ public class BoardDTO {
     private Date postdate;
     private String visitcount;
 
-    // Getters and Setters
     public int getNum() {
         return num;
     }

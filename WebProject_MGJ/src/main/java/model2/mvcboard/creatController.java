@@ -13,12 +13,12 @@ import membership.MemberDTO;
 
 @WebServlet("/create.do")
 public class creatController extends HttpServlet {
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("./create.jsp").forward(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
@@ -26,23 +26,35 @@ public class creatController extends HttpServlet {
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		String mobile = req.getParameter("mobile");
-		
+
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId(id);
 		memberDTO.setPass(pass);
 		memberDTO.setName(name);
 		memberDTO.setEmail(email);
 		memberDTO.setMobile(mobile);
-		
+
 		ServletContext application = getServletContext();
 		MemberDAO memberDAO = new MemberDAO(application);
 		int result = memberDAO.memberRegister(memberDTO);
-		if(result==1) {
+		if (result == 1) {
 			resp.sendRedirect("./login.do");
-		}
-		else {
+		} else {
 			resp.sendRedirect("./create.do");
 		}
+	}
+
+	private boolean idcheck(String id) {
+		if (id.length() < 6 || id.length() > 12) {
+			return false;
+		}
+		for (int i = 0; i < id.length(); i++) {
+			char c = id.charAt(i);
+			if (!(Character.isLowerCase(c) || Character.isDigit(c))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

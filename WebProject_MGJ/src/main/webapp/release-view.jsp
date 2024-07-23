@@ -334,7 +334,7 @@
 						</tr>
 						<tr>
 							<td>제목</td>
-							<td colspan="3">${dto.title}</td>
+							<td colspan="3" class="view_title">${dto.title}</td>
 						</tr>
 						<tr>
 							<td>내용</td>
