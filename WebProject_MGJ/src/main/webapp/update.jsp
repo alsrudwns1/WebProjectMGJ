@@ -309,7 +309,7 @@
 									name="pass" required>
 							</div>
 							<div>
-								<button type="submit">수정</button>
+								<button type="submit" class="login_btn">수정</button>
 							</div>
 						</form>
 					</div>

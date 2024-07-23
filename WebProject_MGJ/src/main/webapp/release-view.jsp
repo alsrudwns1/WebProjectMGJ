@@ -294,7 +294,7 @@
 					<a href="login.jsp" class="login_btn">로그인</a>
 				</div>
 				<div class="shop_btn_wrap">
-					<a href="#" target="_blank" class="shop_btn">SHOP</a>
+					<a href="./release-list.do" target="_blank" class="shop_btn">게시판</a>
 				</div>
 				<div class="down_top_btn">
 					<button class="down_btn">
